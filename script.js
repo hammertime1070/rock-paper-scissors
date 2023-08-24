@@ -5,7 +5,7 @@ function getComputerChoice() {
 }
 
 
-function SingleRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     var playerSelection = playerSelection.toUpperCase();
     var computerSelection = computerSelection.toUpperCase();
     var victoryMessage = "You Win! " + playerSelection + " beats " + computerSelection + "!"
@@ -41,13 +41,38 @@ function SingleRound(playerSelection, computerSelection) {
 }
 
 
-function game() {
-    var i = 0;
-    while (i < 5) {
-        let playerSelection = prompt("ROCK PAPER SCISSORS SHOOT!");
-        console.log(SingleRound(playerSelection=playerSelection, computerSelection=getComputerChoice()));
-        i++;
-    }
+// function game() {
+//     var i = 0;
+//     while (i < 5) {
+//         let playerSelection = prompt("ROCK PAPER SCISSORS SHOOT!");
+//         console.log(playRound(playerSelection=playerSelection, computerSelection=getComputerChoice()));
+//         i++;
+//     }
+// }
+
+
+// UI Logic
+// Player Inputs
+const rock = document.querySelector('#rock')
+const paper = document.querySelector('#paper')
+const scissors = document.querySelector('#scissors')
+
+rock.onclick = () => postResult(playRound(playerSelection='ROCK', computerSelection=getComputerChoice()))
+paper.onlick = () => postResult(playRound(playerSelection = 'PAPER', computerSelection=getComputerChoice()))
+scissors.onclick = () => postResult(playRound(playerSelection='SCISSORS', computerSelection=getComputerChoice()))
+
+// Results Logic
+function postResult(message) {
+    const result = document.querySelector('#results')
+    const content = document.createElement('div')
+    content.classList.add('content')
+    content.textContent = message
+    result.appendChild(content)
+
 }
+
+
+
+
 
 game()
