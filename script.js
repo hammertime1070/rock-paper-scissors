@@ -13,43 +13,41 @@ function playRound(playerSelection, computerSelection) {
     var tieMessage = "You Tied!"
     console.log(playerSelection)
     if (playerSelection === computerSelection) {
-        return tieMessage
+        postResult(tieMessage)
+        setScore(0,0)
     }
     else if (playerSelection === 'ROCK') {
         if (computerSelection === 'SCISSORS') {
-            return victoryMessage
+             postResult(victoryMessage)
+             setScore(1,0)
         }
         else {
-            return defeatMessage
+            postResult(defeatMessage)
+            setScore(0,1)
         }
     }
     else if (playerSelection === 'PAPER') {
         if (computerSelection === 'ROCK') {
-            return victoryMessage
+            postResult(victoryMessage)
+            setScore(1,0)
         }
         else {
-            return defeatMessage
+            postResult(defeatMessage)
+            setScore(0,1)
         }
     }
     else if (playerSelection === 'SCISSORS') {
         if (computerSelection === 'PAPER') {
-            return victoryMessage
+            postResult(victoryMessage)
+            setScore(1,0)
         }
         else {
-            return defeatMessage
+            postResult(defeatMessage)
+            setScore(0,1)
         }
     }
 }
 
-
-// function game() {
-//     var i = 0;
-//     while (i < 5) {
-//         let playerSelection = prompt("ROCK PAPER SCISSORS SHOOT!");
-//         console.log(playRound(playerSelection=playerSelection, computerSelection=getComputerChoice()));
-//         i++;
-//     }
-// }
 
 
 // UI Logic
@@ -58,9 +56,9 @@ const rock = document.querySelector('#rock')
 const paper = document.querySelector('#paper')
 const scissors = document.querySelector('#scissors')
 
-rock.onclick = () => postResult(playRound(playerSelection = 'ROCK', computerSelection=getComputerChoice()))
-paper.onclick = () => postResult(playRound(playerSelection = 'PAPER', computerSelection=getComputerChoice()))
-scissors.onclick = () => postResult(playRound(playerSelection='SCISSORS', computerSelection=getComputerChoice()))
+rock.onclick = () => playRound(playerSelection = 'ROCK', computerSelection=getComputerChoice())
+paper.onclick = () => playRound(playerSelection = 'PAPER', computerSelection=getComputerChoice())
+scissors.onclick = () => playRound(playerSelection='SCISSORS', computerSelection=getComputerChoice())
 
 // Results Logic
 function postResult(message) {
@@ -71,3 +69,16 @@ function postResult(message) {
     results.appendChild(content)
 
 }
+
+let totalPlayerScore = 0;
+let totalComputerScore = 0;
+
+function setScore(playerScore, computerScore) {
+    totalPlayerScore += playerScore;
+    totalComputerScore += computerScore;
+    console.log(`Player Score is ${totalPlayerScore}`)
+    console.log(`Computer Score is ${totalComputerScore}`)
+
+}
+
+// Currently Score is working correct just need to make a function to make a game until one player reaches the score of 5
