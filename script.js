@@ -11,6 +11,7 @@ function playRound(playerSelection, computerSelection) {
     var victoryMessage = "You Win! " + playerSelection + " beats " + computerSelection + "!"
     var defeatMessage = "You Lose! " + computerSelection + " beats " + playerSelection + "!"
     var tieMessage = "You Tied!"
+    console.log(playerSelection)
     if (playerSelection === computerSelection) {
         return tieMessage
     }
@@ -57,22 +58,16 @@ const rock = document.querySelector('#rock')
 const paper = document.querySelector('#paper')
 const scissors = document.querySelector('#scissors')
 
-rock.onclick = () => postResult(playRound(playerSelection='ROCK', computerSelection=getComputerChoice()))
-paper.onlick = () => postResult(playRound(playerSelection = 'PAPER', computerSelection=getComputerChoice()))
+rock.onclick = () => postResult(playRound(playerSelection = 'ROCK', computerSelection=getComputerChoice()))
+paper.onclick = () => postResult(playRound(playerSelection = 'PAPER', computerSelection=getComputerChoice()))
 scissors.onclick = () => postResult(playRound(playerSelection='SCISSORS', computerSelection=getComputerChoice()))
 
 // Results Logic
 function postResult(message) {
-    const result = document.querySelector('#results')
+    const results = document.querySelector('#results')
     const content = document.createElement('div')
     content.classList.add('content')
     content.textContent = message
-    result.appendChild(content)
+    results.appendChild(content)
 
 }
-
-
-
-
-
-game()
