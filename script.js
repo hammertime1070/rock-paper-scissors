@@ -76,9 +76,22 @@ let totalComputerScore = 0;
 function setScore(playerScore, computerScore) {
     totalPlayerScore += playerScore;
     totalComputerScore += computerScore;
-    console.log(`Player Score is ${totalPlayerScore}`)
-    console.log(`Computer Score is ${totalComputerScore}`)
+    displayScore()    
+    if (totalPlayerScore > 4) {
+        alert('You Win')
+        location.reload();
+    }
+    else if (totalComputerScore> 4) {
+        alert('You Lose')
+        location.reload();
+    }
+}com
 
+function displayScore(){
+    const score = document.querySelector('#score')
+    const scoreContent = document.createElement('div')
+    scoreContent.textContent = `Player Score is ${totalPlayerScore} | Computer Score is ${totalComputerScore}`
+    score.appendChild(scoreContent)
 }
 
 // Currently Score is working correct just need to make a function to make a game until one player reaches the score of 5
